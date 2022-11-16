@@ -7,7 +7,6 @@
  *
  * Return: 0 on success, 1 on error, or error code
  */
-
 int hsh(info_t *info, char **av)
 {
 	ssize_t r = 0;
@@ -41,20 +40,18 @@ int hsh(info_t *info, char **av)
 			exit(info->status);
 		exit(info->err_num);
 	}
-
 	return (builtin_ret);
 }
 
 /**
  * find_builtin - finds a builtin command
- * @info: the parameter & return info struc
+ * @info: the parameter & return info struct
  *
  * Return: -1 if builtin not found,
  *			0 if builtin executed successfully,
  *			1 if builtin found but not successful,
  *			-2 if builtin signals exit()
  */
-
 int find_builtin(info_t *info)
 {
 	int i, built_in_ret = -1;
@@ -86,7 +83,6 @@ int find_builtin(info_t *info)
  *
  * Return: void
  */
-
 void find_cmd(info_t *info)
 {
 	char *path = NULL;
@@ -114,7 +110,6 @@ void find_cmd(info_t *info)
 	{
 		if ((interactive(info) || _getenv(info, "PATH=")
 			|| info->argv[0][0] == '/') && is_cmd(info, info->argv[0]))
-
 			fork_cmd(info);
 		else if (*(info->arg) != '\n')
 		{
@@ -130,7 +125,6 @@ void find_cmd(info_t *info)
  *
  * Return: void
  */
-
 void fork_cmd(info_t *info)
 {
 	pid_t child_pid;
